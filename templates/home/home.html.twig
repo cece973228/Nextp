@@ -5,11 +5,14 @@
 
 {% block body %}
 
+ {% for message in app.flashes('success') %}
+        <div class="alert alert-success" role="alert">{{ message }}</div>
+    {% endfor %}
 
 <section id="cover-page" class="home">
     <div id="cover-page-texte" class="content container">
         <h1> Your Online Playlist converter</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel neque excepturi alias asperiores harum, ratione
+        <p class="text container-fluid"> Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel neque excepturi alias asperiores harum, ratione
             voluptas recusandae ad vitae cupiditate magni eos sed, ex, quibusdam suscipit reprehenderit officiis veniam
             in?
         </p>
