@@ -38,44 +38,8 @@
 
 {{parent()}}
 
+
 <script>
-var Spotify = require('spotify-web-api-js');
-var s = new Spotify();
-
-
-let spotifyApi = new SpotifyWebApi();
-
-const { Client } = require("node_modules/spotify-api.js");
-const client = new Client({ 
-    token: { clientID: '91db317bc7794f168be20c73c905b3d1', clientSecret: '4aa452c6e44c4a9a8a1db9702b824f88' },
-    // Ready event is required if you are providing clientID and clientSecret fields.
-    // As the client has to create the token first with it and then emits the ready event.
-    onReady() {
-        console.log(await client.tracks.get('id'));
-    }
-})
-{# 
-const { Client } = require('spotify-api.js');
-
-const client = await Client.create({
-    token: {
-        clientID: '91db317bc7794f168be20c73c905b3d1', // Your spotify application client id.
-        clientSecret: '4aa452c6e44c4a9a8a1db9702b824f88', // Your spotify application client secret.
-        code: 'code', // The code search query from the web redirect. Do not use this field if your aim is to refresh the token.
-        refreshToken: 'refreshToken', // Use this field only if your aim is to refresh your token instead of getting new one put your refresh token here.
-        redirectURL: 'https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=$http://localhost:8000/spotify/callback/' // The redirect url which you have used when redirected to the login page.
-    }
-}); #}
-
-console.log(client.token); // The current user token. 
-await client.artists.follow("SOME ARTIST ID"); // And can use the api methods which are for current user if you have the paticular scopes...
-
-</script>
-
-
-
-
-{# <script>
   // Document has been loaded
   $(document).ready(function () {
     // Helper Function to Extract Access Token for URL
@@ -115,7 +79,11 @@ await client.artists.follow("SOME ARTIST ID"); // And can use the api methods wh
   // Make Spotify API call
   // Note: We are using the track API endpoint.
   $.ajax({
+<<<<<<< HEAD
     url: `https://api.spotify.com/v1/me/playlists` https://api.spotify.com/v1/users/{my-username}/playlists?limit=3&offset=0,
+=======
+    url: `https://api.spotify.com/v1/me/playlists`,
+>>>>>>> 5fd2d7aca0bebe595ec5840d68201759bc18adf8
     type: 'GET',
     dataType: 'json',
     headers: {
