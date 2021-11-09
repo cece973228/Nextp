@@ -3,8 +3,9 @@
 {% block title %}Home{% endblock %}
 
 
-{% block body %}
 
+{% block body %}
+<main> 
  {% for message in app.flashes('success') %}
         <div class="alert alert-success" role="alert">{{ message }}</div>
     {% endfor %}
@@ -19,6 +20,7 @@
     </div>
 
     <!-- /* tryptique */ -->
+    
     <section id="tryptique" class="visuel">
         <div class="row justify-content-around">
             <div  class="text-center">
@@ -64,16 +66,10 @@
             </div>
         </div>
     </section>
-
+    </div>
 
 
 </section>
-
-
-
-
-
-
-
-
+</main>
 {% endblock %}
+

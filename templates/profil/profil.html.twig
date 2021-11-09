@@ -5,30 +5,45 @@
 
 
 {% block body %}
-<div> 
-    <div class="col-xs4">
-                <h1>Profil de {{ app.user.prenom }} {{ app.user.nom }}</h1>
-    </div>
-            <div class="col-xs4">Nom :</div>
-            <div class="col-xs4">{{ app.user.nom }}</div>
-            <div class="col-xs1">Prénom :</div>
-            <div class="col-xs3">{{ app.user.prenom }}</div>
-            <div class="col-xs1">Email :</div>
-            <div class="col-xs3">{{ app.user.email }}</div>
-            <a href="{{ path('users_profil_modifier') }}" class="btn blue">Modifier le profil</a>
+<div class="container">
+    <div class="d-flex marge-nav">
 
+       <div class="container">
+		{% for message in app.flashes('message') %}
+			<div class="col-xs4">
+				<div class="p-3 my-2 rounded-2 success">{{message}}</div>
+			</div>
+		{% endfor %}
+            <div class="col-4">
+                <div class="col-xs4">
+                    <h1>Profil de {{ app.user.prenom }} {{ app.user.nom }}</h1>
+                </div>
+                <div class="col-xs4">Nom :</div>
+                <div class="col-xs4">{{ app.user.nom }}</div>
+                <div class="col-xs1">Prénom :</div>
+                <div class="col-xs3">{{ app.user.prenom }}</div>
+                <div class="col-xs1">Email :</div>
+                <div class="col-xs3">{{ app.user.email }}</div>
+                <a href="{{ path('users_profil_modifier') }}" class="btn blue">Modifier le profil</a>
+                <a href="{{ path('users_pass_modifier') }}" class="btn blue">Modifier le mot de passe</a>
+
+            </div>
+        </div>
+    </div>
+
+    
 </div>
 
- {# </div>
+{#
 
-		<div class="col-xs4">
-			<h1>Playlist de {{ app.user.prenom }} {{ app.user.nom }} ({{ app.playlist|length }})</h1>
-		</div>
-        {% for playlist in app.playlist %}
-            <div class="col-xs1">Titre :</div>
-            <div class="col-xs3">{{ app.playlist.nom_playlist }}</div>
-        {% endfor %}
-        
-	</div> #}
-		
+<div class="col-xs4">
+    <h1>Playlist de {{ app.user.prenom }} {{ app.user.nom }} ({{ app.playlist|length }})</h1>
+</div>
+{% for playlist in app.playlist %}
+<div class="col-xs1">Titre :</div>
+<div class="col-xs3">{{ app.playlist.nom_playlist }}</div>
+{% endfor %}
+
+</div> #}
+
 {% endblock %}
