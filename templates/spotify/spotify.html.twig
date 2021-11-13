@@ -3,34 +3,6 @@
 {% block title %}Hello SpotifyController!{% endblock %}
 
 {% block body %}
-<table class="table">
-  <thead class="thead-dark">
-    <tr>
-      <th scope="col">Nom de la playlist</th>
-
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>Artiste</td>
-      <td>Nom de la musique</td>
-      <td>durée de la musique</td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Artiste</td>
-      <td>Nom de la musique</td>
-      <td>durée de la musique</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Artiste</td>
-      <td>Nom de la musique</td>
-      <td>durée de la musique</td>
-    </tr>
-  </tbody>
-</table>
 
 {% endblock %}
 
@@ -42,6 +14,7 @@
 <script>
   // Document has been loaded
   $(document).ready(function () {
+    console.log("Load");
     // Helper Function to Extract Access Token for URL
     const getUrlParameter = (sParam) => {
       let sPageURL = window.location.search.substring(1),////substring will take everything after the https link and split the #/&
@@ -63,10 +36,10 @@
 
     // AUTHORIZE with Spotify (if needed)
     // *************** REPLACE THESE VALUES! *************************
-    let client_id = {{client_id}};
+    let client_id = '91db317bc7794f168be20c73c905b3d1';
   // Use the following site to convert your regular url to the encoded version:
   // https://www.url-encode-decode.com/
-  let redirect_uri = 'http://localhost:8000/spotify/callback/'; // GitHub Pages URL or whatever your public url to this app is
+  let redirect_uri = 'http://localhost:8000/step2/callback/'; // GitHub Pages URL or whatever your public url to this app is
   // *************** END *************************
 
   const redirect = `https://accounts.spotify.com/authorize?client_id=${client_id}&response_type=token&redirect_uri=${redirect_uri}`;
@@ -74,34 +47,10 @@
   if (accessToken == null || accessToken == "" || accessToken == undefined) {
     window.location.replace(redirect);
   }
+  });
 
 
-  // Make Spotify API call
-  // Note: We are using the track API endpoint.
-  $.ajax({
-    url: `https://api.spotify.com/v1/me/playlists`,
-    type: 'GET',
-    dataType: 'json',
-    headers: {
-      'Authorization': 'Bearer ' + accessToken
-    },
-    success: function (data) {
-      console.log(data);
-      var html = ``;
-      for (playlist of data) {
-        html += `
-              <tr> 
-                <td>${playlist.name}</td>
-              </tr>
-       `
-        
-      }
 
-      $(`#table tbody`).html(html);
-    }
-
-  }); // End of Spotify ajax call
- }); // End of document.ready
 
 </script> #}
 

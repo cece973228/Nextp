@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class Step2Controller extends AbstractController
 {
     /**
-     * @Route("/step2", name="step2")
+     * @Route("/step2/callback/", name="step2")
      */
     public function step2(): Response
     {

@@ -13,8 +13,6 @@ class SpotifyController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('spotify/spotify.html.twig', [
-            'client_id' => '91db317bc7794f168be20c73c905b3d1',
-        ]);
+        return $this->render('spotify/spotify.html.twig');
     }
 }
